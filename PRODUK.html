@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TENTANG KAMI</title>
+    <link rel="icon" href="img/LOGO.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: white;
+            overflow-x: hidden;
+        }
+        .fixed-header {
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .fixed-navbar {
+            top: 0;
+        }
+        .content {
+            padding-top: 7rem;
+        }
+        .navbar-transparent {
+            background-color: white;
+            color: red;
+        }
+        .navbar-solid {
+            background-color: white;
+            color: red;
+        }
+        .section-bg {
+            background-image: url('BENNERWP1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .promo-slide-in {
+            animation: slideIn 1s forwards;
+        }
+        .promo-slide-out {
+            animation: slideOut 1s forwards;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideOut {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(100%);
+            }
+        }
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-menu {
+                display: none;
+            }
+        }
+        @media (min-width: 769px) {
+            .mobile-menu {
+                display: none;
+            }
+
+            .desktop-menu {
+                display: block;
+            }
+        }
+        .footer {
+            background-color: white;
+            color: black;
+            position: relative;
+        }
+
+        .footer::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 0, 0, 0.8);
+            z-index: -1;
+        }
+
+        .footer h2,
+        .footer h3 {
+            color: red;
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .animate-on-scroll-up {
+            transform: translateY(20px);
+        }
+
+        .animate-on-scroll-down {
+            transform: translateY(-20px);
+        }
+
+        .animate-delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .animate-delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .animate-delay-3 {
+            transition-delay: 0.6s;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+
+<!-- START NAVBAR COMPONENT -->
+<header id="navbar" class="fixed-header fixed-navbar navbar-transparent fade-in">
+    <div class="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+        <a class="block text-teal-600" href="HOME.html">
+            <span class="sr-only">HOME</span>
+            <img src="img/LOGO.png" alt="YUDASHOPLOGO" class="h-14">
+        </a>
+        <div class="flex flex-1 items-center justify-end md:justify-between">
+            <nav aria-label="Global" class="hidden md:block desktop-menu">
+                <ul class="flex items-center gap-6 text-sm">
+                    <li>
+                        <a class="text-red-700 transition hover:text-red-700" href="HOME.html">HOME</a>
+                    </li>
+                    <li>
+                        <a class="text-red-700 transition hover:text-red-700" href="TENTANGKAMI.html">TENTANG KAMI</a>
+                    </li>
+                    <li>
+                        <a class="text-red-700 transition hover:text-red-700" href="PRODUK.html">PRODUK</a>
+                    </li>
+                    <li>
+                        <a class="text-red-700 transition hover:text-red-700" href="KONTAK.html">KONTAK</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="block md:hidden mobile-menu">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- END NAVBAR COMPONENT -->
+
+<!-- START MOBILE MENU COMPONENT -->
+<div id="mobile-menu" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50 flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-3/4 max-w-sm text-center">
+        <ul class="space-y-4">
+            <li>
+                <a class="text-red-700 transition hover:text-red-700" href="HOME.html">HOME</a>
+            </li>
+            <li>
+                <a class="text-red-700 transition hover:text-red-700" href="TENTANGKAMI.html">TENTANG KAMI</a>
+            </li>
+            <li>
+                <a class="text-red-700 transition hover:text-red-700" href="PRODUK.html">PRODUK</a>
+            </li>
+            <li>
+                <a class="text-red-700 transition hover:text-red-700" href="KONTAK.html">KONTAK</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- END MOBILE MENU COMPONENT -->
+
+<!-- OPEN PRODUK LAYANAN SECTION -->
+<section>
+    <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <header class="text-center">
+            <br>
+            <br>
+            <h2 class="text-xl font-bold text-red-600 sm:text-3xl">PRODUK LAYANAN KAMI</h2>
+            <p class="mx-auto mt-4 max-w-md text-gray-900">
+            </p>
+        </header>
+
+        <ul class="mt-8 flex justify-center items-center gap-4 flex-wrap animate-on-scroll fade-in-up">
+            <li class="animate-on-scroll-up">
+                <a href="PENITIPANHEWAN.html" class="group block overflow-hidden">
+                    <img
+                            src="img/PENITIPAN.jpg"
+                            alt="Penitipan Hewan"
+                            class="h-[350px] w-[350px] object-cover transition duration-500 group-hover:scale-105"
+                    />
+
+                    <div class="relative bg-white pt-3 text-center">
+                        <h3 class="text-xs text-gray-900 group-hover:underline group-hover:underline-offset-4">
+                            SELENGKAPNYA
+                        </h3>
+
+                        <p class="mt-2">
+                            <span class="tracking-wider text-red-600"> PENITIPAN HEWAN </span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+
+            <li class="animate-on-scroll-up">
+                <a href="PERAWATANHEWAN.html" class="group block overflow-hidden">
+                    <img
+                            src="img/PERAWATAN.jpg"
+                            alt="Perawatan Hewan"
+                            class="h-[350px] w-[350px] object-cover transition duration-500 group-hover:scale-105"
+                    />
+
+                    <div class="relative bg-white pt-3 text-center">
+                        <h3 class="text-xs text-gray-900 group-hover:underline group-hover:underline-offset-4">
+                            SELENGKAPNYA
+                        </h3>
+                        <p class="mt-2">
+                            <span class="tracking-wider text-red-600"> PERAWATAN HEWAN </span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+
+            <li class="animate-on-scroll-up">
+                <a href="DOKTERHEWAN.html" class="group block overflow-hidden">
+                    <img
+                            src="img/DOKTER%20HEWAN.jpg"
+                            alt="Dokter Hewan"
+                            class="h-[350px] w-[350px] object-cover transition duration-500 group-hover:scale-105"
+                    />
+
+                    <div class="relative bg-white pt-3 text-center">
+                        <h3 class="text-xs text-gray-900 group-hover:underline group-hover:underline-offset-4">
+                            SELENGKAPNYA
+                        </h3>
+
+                        <p class="mt-2">
+                            <span class="tracking-wider text-red-600">  DOKTER HEWAN </span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+        <br>
+    </div>
+</section>
+<!-- END PRODUK LAYANAN SECTION -->
+
+<!-- OPEN FOOTER CONTENT -->
+<footer class="footer py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div>
+            <h2 class="text-xl font-bold mb-9 text-red-600 flex items-center gap-2">
+                <img src="img/LOGO.png" alt="Logo" class="h-20 w-130">
+            </h2>
+            <p class="text-gray-700 text-base">Jl. Jalan Raya No. 123, Jakarta Pusat</p>
+            <p class="text-gray-900 text-base">Telp: 08123456789 | Email: yudashop@gmail.com</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold mb-2 text-red-900">JAM OPRASIONAL KAMI :</h3>
+            <p class="text-gray-900 text-base">Senin - Jumat: 08:00 - 17:00</p>
+            <p class="text-gray-900 text-base">Sabtu: 09:00 - 14:00</p>
+            <p class="text-gray-900 text-base">Minggu: Tutup</p>
+        </div>
+    </div>
+</footer>
+<!-- END FOOTER CONTENT -->
+
+<!-- ANIMASI UI HEADER MUNCUL ATAU TIDAK -->
+<script>
+    const header = document.getElementById('navbar');
+    const promoSection = document.getElementById('promo');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    window.onscroll = function () {
+        if (window.pageYOffset > 0) {
+            header.classList.add('navbar-solid');
+            header.classList.remove('navbar-transparent');
+        } else {
+            header.classList.add('navbar-transparent');
+            header.classList.remove('navbar-solid');
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+            observer.observe(element);
+        });
+
+        setTimeout(() => {
+            promoSection.classList.remove('promo-slide-in');
+            promoSection.classList.add('promo-slide-out');
+        }, 5000); // change to 5000ms (5 seconds)
+    });
+
+    mobileMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>

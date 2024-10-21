@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>YUDASHOP</title>
+    <link rel="icon" href="LOGO.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- START CSS COMPONENT -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: white;
+            overflow-x: hidden;
+        }
+        .fixed-header {
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .fixed-navbar {
+            top: 0;
+        }
+        .content {
+            padding-top: 7rem;
+        }
+        .navbar-transparent {
+            background-color: transparent;
+            color: white;
+        }
+        .navbar-solid {
+            background-color: white;
+            color: red;
+        }
+        .section-bg {
+            background-image: url('BENNERWP1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        /* Animasi Muncul */
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        /* Animasi Scroll dengan Delay */
+        .animate-scroll-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out 0.2s, transform 0.5s ease-out 0.2s; /* Menambahkan delay 0.2 detik */
+        }
+        .animate-scroll-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .promo-slide-in {
+            animation: slideIn 1s forwards;
+        }
+        .promo-slide-out {
+            animation: slideOut 1s forwards;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideOut {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(100%);
+            }
+        }
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-menu {
+                display: none;
+            }
+        }
+        @media (min-width: 769px) {
+            .mobile-menu {
+                display: none;
+            }
+            .desktop-menu {
+                display: block;
+            }
+        }
+        .footer {
+            background-color: #ffffff;
+            color: black;
+            position: relative; /* Menambahkan posisi relatif untuk membuat lapisan bayangan merah */
+        }
+        .footer::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px; /* Menggeser bayangan merah ke atas */
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 0, 0, 0.8); /* Warna merah yang lebih terang dengan opacity yang lebih rendah */
+            z-index: -1; /* Menempatkan bayangan di belakang konten footer */
+        }
+        .footer h2,
+        .footer h3 {
+            color: red; /* Teks YUDABENGKEL dan JAM OPERASIONAL berwarna merah */
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+<section class="bg-white py-16 mt-16">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+        <div class="sm:text-center mb-14">
+            <p class="text-3xl font-bold tracking-tight text-red-70090080 sm:text-4xl">FORMULIR PENDAFTARAN YUDA SHOP</p>
+            <p class="mt-2 text-lg leading-8 text-black">Silakan isi formulir di bawah ini untuk mendaftar layanan penitipan hewan, dokter hewan, atau perawatan hewan. Pembayaran hanya dapat dilakukan di tempat.</p>
+        </div>
+        <div class="mx-auto max-w-lg">
+            <form id="registrationForm" action="#" method="POST" class="space-y-6">
+                <!-- Nama Lengkap -->
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-black">Nama Lengkap</label>
+                    <input type="text" id="fullName" name="fullName" required class="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md shadow-sm placeholder-gray-400 text-black focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" placeholder="Masukkan nama lengkap Anda">
+                </div>
+
+                <!-- Gender -->
+                <div>
+                    <label class="block text-sm font-medium text-black">Gender</label>
+                    <div class="mt-1 flex items-center space-x-4">
+                        <div class="flex items-center">
+                            <input type="radio" id="male" name="gender" value="male" required class="h-4 w-4 text-red-600 border-gray-300 focus:ring-red-500">
+                            <label for="male" class="ml-2 text-sm text-black">Laki-laki</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="radio" id="female" name="gender" value="female" required class="h-4 w-4 text-red-600 border-gray-300 focus:ring-red-500">
+                            <label for="female" class="ml-2 text-sm text-black">Perempuan</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- NIK KTP -->
+                <div>
+                    <label for="nik" class="block text-sm font-medium text-black">NIK KTP</label>
+                    <input type="text" id="nik" name="nik" required class="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md shadow-sm placeholder-gray-400 text-black focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" placeholder="Masukkan NIK KTP Anda">
+                </div>
+
+                <!-- Domisili -->
+                <div>
+                    <label for="domisili" class="block text-sm font-medium text-black">Domisili</label>
+                    <input type="text" id="domisili" name="domisili" required class="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md shadow-sm placeholder-gray-400 text-black focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" placeholder="Masukkan alamat domisili Anda">
+                </div>
+
+                <!-- Jenis Hewan -->
+                <div>
+                    <label for="animalType" class="block text-sm font-medium text-black">Jenis Hewan</label>
+                    <input type="text" id="animalType" name="animalType" required class="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md shadow-sm placeholder-gray-400 text-black focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" placeholder="Masukkan jenis hewan Anda">
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-black">Email</label>
+                    <input type="email" id="email" name="email" required class="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md shadow-sm placeholder-gray-400 text-black focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" placeholder="Masukkan alamat email Anda">
+                </div>
+
+                <!-- Nomor Telepon -->
+                <div>
+                    <label for="phone" class="block text-sm font-medium text-black">Nomor Telepon</label>
+                    <input type="tel" id="phone" name="phone" required class="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md shadow-sm placeholder-gray-400 text-black focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" placeholder="Masukkan nomor telepon Anda">
+                </div>
+
+                <!-- Pilihan Layanan -->
+                <div>
+                    <label for="service" class="block text-sm font-medium text-black">Pilih Layanan</label>
+                    <select id="service" name="service" required class="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                        <option value="">Pilih layanan</option>
+                        <option class="block text-sm font-medium text-black" value="penitipan">Penitipan Hewan</option>
+                        <option class="block text-sm font-medium text-black" value="dokter">Dokter Hewan</option>
+                        <option value="perawatan">Perawatan Hewan</option>
+                    </select>
+                </div>
+
+                <!-- Tanggal & Waktu -->
+                <div>
+                    <label for="dateTime" class="block text-sm font-medium text-black">Tanggal & Waktu</label>
+                    <input type="datetime-local" id="dateTime" name="dateTime" required class="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md shadow-sm focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm">
+                </div>
+
+                <!-- Catatan -->
+                <div>
+                    <label for="notes" class="block text-sm font-medium text-black">Catatan</label>
+                    <textarea id="notes" name="notes" rows="4" class="mt-1 block w-full px-3 py-2 border border-red-600 rounded-md shadow-sm placeholder-gray-400 text-black focus:outline-none focus:ring-red-500 focus:border-red-500 sm:text-sm" placeholder="Masukkan catatan tambahan jika ada"></textarea>
+                </div>
+
+                <!-- Informasi Pembayaran -->
+                <div class="text-sm text-black">
+                    <p>Pembayaran hanya dapat dilakukan di tempat.</p>
+                </div>
+
+                <!-- Submit Button and Back Button -->
+                <div class="flex justify-between items-center">
+                    <a href="HOME.html" class="inline-flex items-center px-4 py-2 border border-red-600 text-base font-medium rounded-md text-white bg-red-600 shadow-sm hover:bg-white hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        Kembali
+                    </a>
+                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-red-600 text-base font-medium rounded-md text-white bg-red-600 shadow-sm hover:bg-white hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                        Kirim Formulir
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Popup Modal -->
+<div id="successModal" class="fixed inset-0 z-50 hidden bg-gray-900 bg-opacity-50 flex items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <div class="text-center">
+            <p class="text-lg font-semibold text-black">Pendaftaran Berhasil!</p>
+            <p class="mt-2 text-gray-700">Terima kasih telah mendaftar. Kami akan segera menghubungi Anda dengan informasi lebih lanjut.</p>
+            <button onclick="closeModal()" class="mt-4 px-4 py-2 bg-red-600 text-white rounded-md hover:bg-white hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                Tutup
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript to handle form submission and popup -->
+<script>
+    document.getElementById('registrationForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+        document.getElementById('successModal').classList.remove('hidden'); // Show the popup
+    });
+
+    function closeModal() {
+        document.getElementById('successModal').classList.add('hidden'); // Hide the popup
+    }
+</script>
+
+
+</body>
+</html>

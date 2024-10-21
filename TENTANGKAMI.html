@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TENTANG KAMI</title>
+    <link rel="icon" href="img/LOGO.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: white;
+            overflow-x: hidden;
+        }
+        .fixed-header {
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .fixed-navbar {
+            top: 0;
+        }
+        .content {
+            padding-top: 7rem;
+        }
+        .navbar-transparent {
+            background-color: white;
+            color: red;
+        }
+        .navbar-solid {
+            background-color: white;
+            color: red;
+        }
+        .section-bg {
+            background-image: url('BENNERWP1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards;
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .promo-slide-in {
+            animation: slideIn 1s forwards;
+        }
+        .promo-slide-out {
+            animation: slideOut 1s forwards;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideOut {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(100%);
+            }
+        }
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-menu {
+                display: none;
+            }
+        }
+        @media (min-width: 769px) {
+            .mobile-menu {
+                display: none;
+            }
+
+            .desktop-menu {
+                display: block;
+            }
+        }
+        .footer {
+            background-color: white;
+            color: black;
+            position: relative;
+        }
+
+        .footer::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 0, 0, 0.8);
+            z-index: -1;
+        }
+
+        .footer h2,
+        .footer h3 {
+            color: red;
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        .animate-on-scroll-up {
+            transform: translateY(20px);
+        }
+
+        .animate-on-scroll-down {
+            transform: translateY(-20px);
+        }
+
+        .animate-delay-1 {
+            transition-delay: 0.2s;
+        }
+
+        .animate-delay-2 {
+            transition-delay: 0.4s;
+        }
+
+        .animate-delay-3 {
+            transition-delay: 0.6s;
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+
+<!-- START NAVBAR COMPONENT -->
+<header id="navbar" class="fixed-header fixed-navbar navbar-transparent fade-in">
+    <div class="mx-auto flex h-20 max-w-screen-xl items-center gap-9 px-5 sm:px-7 lg:px-8">
+        <a class="block text-teal-600" href="HOME.html">
+            <span class="sr-only">HOME</span>
+            <img src="img/LOGO.png" alt="YUDASHOPLOGO" class="h-14">
+        </a>
+        <div class="flex flex-1 items-center justify-end md:justify-between">
+            <nav aria-label="Global" class="hidden md:block desktop-menu">
+                <ul class="flex items-center gap-6 text-sm">
+                    <li>
+                        <a class="text-red-500 transition hover:text-red-800" href="HOME.html">HOME</a>
+                    </li>
+                    <li>
+                        <a class="text-red-500 transition hover:text-red-800" href="TENTANGKAMI.html">TENTANG KAMI</a>
+                    </li>
+                    <li>
+                        <a class="text-red-500 transition hover:text-red-800" href="PRODUK.html">PRODUK</a>
+                    </li>
+                    <li>
+                        <a class="text-red-500 transition hover:text-red-800" href="KONTAK.html">KONTAK</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="block md:hidden mobile-menu">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- END NAVBAR COMPONENT -->
+
+<!-- START MOBILE MENU COMPONENT -->
+<div id="mobile-menu" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50 flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-3/4 max-w-sm text-center">
+        <ul class="space-y-4">
+            <li>
+                <a class="text-red-700 transition hover:text-red-700" href="HOME.html">HOME</a>
+            </li>
+            <li>
+                <a class="text-red-700 transition hover:text-red-700" href="TENTANGKAMI.html">TENTANG KAMI</a>
+            </li>
+            <li>
+                <a class="text-red-700 transition hover:text-red-700" href="PRODUK.html">PRODUK</a>
+            </li>
+            <li>
+                <a class="text-red-700 transition hover:text-red-700" href="KONTAK.html">KONTAK</a>
+            </li>
+        </ul>
+        </ul>
+    </div>
+</div>
+<!-- END MOBILE MENU COMPONENT -->
+
+<!-- START SECTION ABOUT US-->
+<div id="about" class="relative bg-white overflow-hidden mt-16">
+    <div class="max-w-7xl mx-auto">
+        <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+            <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2"
+                 fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <polygon points="50,0 100,0 50,100 0,100"></polygon>
+            </svg>
+
+            <div class="pt-1"></div>
+
+            <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                <div class="sm:text-center lg:text-left">
+                    <h2 class="my-6 text-2xl tracking-tight font-extrabold text-red-500 sm:text-3xl md:text-4xl">
+                        TENTANG KAMI
+                    </h2>
+
+                    <p class="text-red-600">
+                        Selamat datang di Yudashop, tempat di mana kepedulian terhadap hewan peliharaan adalah prioritas utama kami. Yudashop hadir sebagai solusi komprehensif untuk semua kebutuhan hewan peliharaan Anda, mulai dari layanan dokter hewan, penitipan hewan, hingga perawatan dan grooming. Kami memahami bahwa hewan peliharaan bukan hanya sekadar binatang, melainkan anggota keluarga yang berharga dan layak mendapatkan perawatan terbaik.
+                    </p>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        <img class="h-56 w-full object-cover object-top sm:h-72 md:h-96 lg:w-full lg:h-full" src="img/DOKTER%20HEWAN.jpg" alt="">
+    </div>
+</div>
+<!-- END SECTION ABOUT US-->
+
+<!-- OPEN WHY US! SECTION -->
+<section class="text-gray-700 body-font mt-10">
+    <div class="flex justify-center text-3xl font-bold text-red-500 text-center">
+        KENAPA KAMI?
+    </div>
+    <div class="container px-5 py-12 mx-auto">
+        <div class="flex flex-wrap text-center justify-center">
+            <div class="p-4 md:w-1/4 sm:w-1/2">
+                <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                    <div class="flex justify-center">
+                        <img src="img/PELARATANDOKTER.png" class="w-32 mb-3">
+                    </div>
+                    <h2 class="title-font font-regular text-2xl text-red-600">PELARATAN STERIL</h2>
+                </div>
+            </div>
+
+            <div class="p-4 md:w-1/4 sm:w-1/2">
+                <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                    <div class="flex justify-center">
+                        <img src="img/UANG.png" class="w-32 mb-3">
+                    </div>
+                    <h2 class="title-font font-regular text-2xl text-red-600">HARGA SESUAI KANTONG</h2>
+                </div>
+            </div>
+
+            <div class="p-4 md:w-1/4 sm:w-1/2">
+                <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                    <div class="flex justify-center">
+                        <img src="img/TEPAT%20WAKTU.png" class="w-32 mb-3">
+                    </div>
+                    <h2 class="title-font font-regular text-2xl text-red-600">KETEPATAN WAKTU</h2>
+                </div>
+            </div>
+
+            <div class="p-4 md:w-1/4 sm:w-1/2">
+                <div class="px-4 py-6 transform transition duration-500 hover:scale-110">
+                    <div class="flex justify-center">
+                        <img src="img/PELAYANAN.png" class="w-32 mb-3">
+                    </div>
+                    <h2 class="title-font font-regular text-2xl text-red-600">TENAGA KERJA BERPENGALAMAN</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- END WHY US! SECTION -->
+
+<!-- START GALLERY SECTION -->
+<section class="py-10 bg-red-600" id="services">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white mb-8 text-center">PELAYANAN KAMI</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div
+                    class="bg-black rounded-lg p-0.5 shadow-lg overflow-hidden min-h-full transition-transform transform hover:scale-105 hover:shadow-2xl">
+                <div class="text-center text-white font-medium">PALING LARIS!</div>
+                <img src="img/DOKTER%20HEWAN.jpg" alt="PENITIPAN"
+                     class="w-full h-64 object-cover rounded-t-lg">
+                <div class="p-6 bg-white text-center rounded-b-lg md:min-h-full">
+                    <h3 class="text-xl font-medium text-red-600 mb-2">DOKTER HEWAN</h3>
+                    <p class="text-red-600 text-base">Kesehatan hewan peliharaan Anda adalah prioritas kami. Tim dokter hewan kami yang profesional dan berpengalaman siap memberikan perawatan medis terbaik. Kami menawarkan layanan kesehatan lengkap mulai dari pemeriksaan rutin, vaksinasi, hingga perawatan penyakit dan cedera. Dengan fasilitas modern dan pendekatan yang penuh kasih, kami berkomitmen untuk menjaga hewan peliharaan Anda tetap sehat dan bahagia.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
+                <img src="img/PERAWATAN.jpg" alt="PERAWATAN"
+                     class="w-full h-64 object-cover">
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-medium text-red-600 mb-2">PERAWATAN</h3>
+                    <p class="text-red-600 text-base">Buat hewan peliharaan Anda tampil menawan dengan layanan perawatan kami. Mulai dari grooming standar hingga perawatan khusus, tim kami yang berpengalaman siap memberikan yang terbaik. Kami menggunakan produk berkualitas tinggi yang aman untuk hewan peliharaan Anda, serta teknik terbaru untuk memastikan hasil yang memuaskan.</p>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 hover:shadow-2xl">
+                <img src="img/PENITIPAN.jpg" alt="PENITIPAN"
+                     class="w-full h-64 object-cover">
+                <div class="p-6 text-center">
+                    <h3 class="text-xl font-medium text-red-600 mb-2">PENITIPAN HEWAN</h3>
+                    <p class="text-red-600 text-base">Buat hewan peliharaan Anda tampil menawan dengan layanan perawatan kami. Mulai dari grooming standar hingga perawatan khusus, tim kami yang berpengalaman siap memberikan yang terbaik. Kami menggunakan produk berkualitas tinggi yang aman untuk hewan peliharaan Anda, serta teknik terbaru untuk memastikan hasil yang memuaskan.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- SELESAI GALLERY SECTION -->
+
+<section class="bg-white">
+    <div class="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
+        <h2 class="text-center text-4xl font-bold tracking-tight text-red-600 sm:text-5xl">
+            PENILAIAN DARI COSTOMER
+        </h2>
+
+        <div class="mt-8 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
+            <blockquote class="rounded-lg bg-red-600 p-6 shadow-sm sm:p-8">
+                <div class="flex items-center gap-4">
+                    <img
+                            alt=""
+                            src="img/JOKOWI.jpg"
+                            class="size-14 rounded-full object-cover"
+                    />
+
+                    <div>
+                        <div class="flex justify-center gap-0.5 text-white">
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                        </div>
+
+                        <p class="mt-0.5 text-lg font-medium text-white">JOKO WIDODO</p>
+                    </div>
+                </div>
+
+                <p class="mt-4 text-white">
+                    "Saya sangat puas dengan layanan yang diberikan oleh dokter hewan di FebrioShop. Mereka sangat profesional dan terampil dalam merawat hewan peliharaan saya. Setiap kali saya membawa hewan peliharaan saya ke sini, saya merasa yakin bahwa mereka akan mendapatkan perawatan terbaik."
+                </p>
+            </blockquote>
+
+            <blockquote class="rounded-lg bg-red-600 p-6 shadow-sm sm:p-8">
+                <div class="flex items-center gap-4">
+                    <img
+                            alt=""
+                            src="img/PRABOWO.jpeg"
+                            class="size-14 rounded-full object-cover"
+                    />
+
+                    <div>
+                        <div class="flex justify-center gap-0.5 text-white">
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                        </div>
+
+                        <p class="mt-0.5 text-lg font-medium text-white">PRABOWO SUBIANTO</p>
+                    </div>
+                </div>
+
+                <p class="mt-4 text-white">
+                    "Saya sangat puas dengan layanan penitipan hewan di FebrioShop. Tempat ini benar-benar profesional dan peduli terhadap kesejahteraan hewan. Setiap kali saya harus meninggalkan kota, saya selalu merasa tenang menitipkan kucing saya di sini. Stafnya sangat ramah dan berpengetahuan, mereka selalu memberikan laporan harian tentang kondisi dan aktivitas hewan peliharaan saya."
+                </p>
+            </blockquote>
+
+            <blockquote class="rounded-lg bg-red-600 p-6 shadow-sm sm:p-8">
+                <div class="flex items-center gap-4">
+                    <img
+                            alt=""
+                            src="img/SBY.jpg"
+                            class="size-14 rounded-full object-cover"
+                    />
+
+                    <div>
+                        <div class="flex justify-center gap-0.5 text-white">
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                            <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5"
+                                    viewBox="0 0 20 20"
+                                    fill="currentColor"
+                            >
+                                <path
+                                        d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"
+                                />
+                            </svg>
+                        </div>
+
+                        <p class="mt-0.5 text-lg font-medium text-white">SBY</p>
+                    </div>
+                </div>
+
+                <p class="mt-4 text-white">
+                    "Saya sangat puas dengan layanan perawatan hewan di FebrioShop. Mereka benar-benar profesional dan sangat perhatian terhadap setiap detail perawatan hewan peliharaan saya. Kucing saya selalu kembali dengan bulu yang bersih dan sehat setelah perawatan di sini."
+                </p>
+            </blockquote>
+        </div>
+    </div>
+</section>
+
+<!-- START MAPS COMPONENT -->
+<div class="bg-red-600 py-12">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-white lg:text-4xl text-center mb-8">LOKASI KAMI</h2>
+        <div class="relative overflow-hidden rounded-lg shadow-lg">
+            <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15867.555172683898!2d106.82963754644712!3d-6.145635952921705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5ee4a113287%3A0x30d027432d896366!2sBENBEN%20PETCARE%20(Vet%20Clinic)!5e0!3m2!1sid!2sid!4v1721726276113!5m2!1sid!2sid"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</div>
+<!-- END MAPS COMPONENT -->
+
+<!-- OPEN FOOTER CONTENT -->
+<footer class="footer py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div>
+            <h2 class="text-xl font-bold mb-9 text-red-600 flex items-center gap-2">
+                <img src="img/LOGO.png" alt="Logo" class="h-20 w-130">
+            </h2>
+            <p class="text-gray-700 text-base">Jl. Jalan Raya No. 123, Jakarta Pusat</p>
+            <p class="text-gray-900 text-base">Telp: 08123456789 | Email: yudashop@gmail.com</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold mb-2 text-red-900">JAM OPRASIONAL KAMI :</h3>
+            <p class="text-gray-900 text-base">Senin - Jumat: 08:00 - 17:00</p>
+            <p class="text-gray-900 text-base">Sabtu: 09:00 - 14:00</p>
+            <p class="text-gray-900 text-base">Minggu: Tutup</p>
+        </div>
+    </div>
+</footer>
+<!-- END FOOTER CONTENT -->
+
+<!-- ANIMASI UI HEADER MUNCUL ATAU TIDAK -->
+<script>
+    const header = document.getElementById('navbar');
+    const promoSection = document.getElementById('promo');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    window.onscroll = function () {
+        if (window.pageYOffset > 0) {
+            header.classList.add('navbar-solid');
+            header.classList.remove('navbar-transparent');
+        } else {
+            header.classList.add('navbar-transparent');
+            header.classList.remove('navbar-solid');
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+            observer.observe(element);
+        });
+
+        setTimeout(() => {
+            promoSection.classList.remove('promo-slide-in');
+            promoSection.classList.add('promo-slide-out');
+        }, 5000); // change to 5000ms (5 seconds)
+    });
+
+    mobileMenuButton.addEventListener('click', function () {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+</body>
+</html>

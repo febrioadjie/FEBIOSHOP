@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FEBIOSHOP</title>
+    <link rel="icon" href="img/LOGO.png" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- START CSS COMPONENT -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: white;
+            overflow-x: hidden;
+        }
+        .fixed-header {
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .fixed-navbar {
+            top: 0;
+        }
+        .content {
+            padding-top: 7rem;
+        }
+        .navbar-transparent {
+            background-color: transparent;
+            color: white;
+        }
+        .navbar-solid {
+            background-color: white;
+            color: red;
+        }
+        .section-bg {
+            background-image: url('img/BENNERWP1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .text-shadow {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        /* Animasi Muncul */
+        .animate-fade-in {
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        /* Animasi Scroll dengan Delay */
+        .animate-scroll-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out 0.2s, transform 0.5s ease-out 0.2s; /* Menambahkan delay 0.2 detik */
+        }
+        .animate-scroll-up.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .promo-slide-in {
+            animation: slideIn 1s forwards;
+        }
+        .promo-slide-out {
+            animation: slideOut 1s forwards;
+        }
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+        @keyframes slideOut {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(100%);
+            }
+        }
+        @media (max-width: 768px) {
+            .mobile-menu {
+                display: block;
+            }
+            .desktop-menu {
+                display: none;
+            }
+        }
+        @media (min-width: 769px) {
+            .mobile-menu {
+                display: none;
+            }
+            .desktop-menu {
+                display: block;
+            }
+        }
+        .footer {
+            background-color: white;
+            color: black;
+            position: relative; /* Menambahkan posisi relatif untuk membuat lapisan bayangan merah */
+        }
+        .footer::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -10px; /* Menggeser bayangan merah ke atas */
+            width: 100%;
+            height: 10px;
+            background: rgba(255, 0, 0, 0.8); /* Warna merah yang lebih terang dengan opacity yang lebih rendah */
+            z-index: -1; /* Menempatkan bayangan di belakang konten footer */
+        }
+        .footer h2,
+        .footer h3 {
+            color: red; /* Teks YUDABENGKEL dan JAM OPERASIONAL berwarna merah */
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-100">
+<!-- START NAVBAR COMPONENT -->
+<header id="navbar" class="fixed-header fixed-navbar navbar-transparent animate-fade-in">
+    <div class="mx-auto flex h-16 max-w-screen-xl items-center gap-8 px-4 sm:px-6 lg:px-8">
+        <a class="block text-teal-600" href="HOME.html">
+            <span class="sr-only">HOME</span>
+            <img src="img/LOGO.png" alt="FEBIOLOGO" class="h-16">
+        </a>
+        <div class="flex flex-1 items-center justify-end md:justify-between">
+            <nav aria-label="Global" class="hidden md:block desktop-menu">
+                <ul class="flex items-center gap-6 text-sm">
+                    <li>
+                        <a class="text-white transition hover:text-red-600" href="HOME.html">HOME</a>
+                    </li>
+                    <li>
+                        <a class="text-white transition hover:text-red-600" href="TENTANGKAMI.html">TENTANG KAMI</a>
+                    </li>
+                    <li>
+                        <a class="text-white transition hover:text-red-600" href="PRODUK.html">PRODUK</a>
+                    </li>
+                    <li>
+                        <a class="text-white transition hover:text-red-600" href="KONTAK.html">KONTAK</a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="block md:hidden mobile-menu">
+                <button id="mobile-menu-button" class="text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- END NAVBAR COMPONENT -->
+
+<!-- START MOBILE MENU COMPONENT -->
+<div id="mobile-menu" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 z-50 flex items-center justify-center">
+    <div class="bg-white p-8 rounded-lg shadow-lg w-3/4 max-w-sm text-center">
+        <ul class="space-y-4">
+            <li>
+                <a class="text-red-600 transition hover:text-gray-600" href="HOME.html">HOME</a>
+            </li>
+            <li>
+                <a class="text-red-600 transition hover:text-gray-600" href="TENTANGKAMI.html">TENTANG KAMI</a>
+            </li>
+            <li>
+                <a class="text-red-600 transition hover:text-gray-600" href="PRODUK.html">PRODUK</a>
+            </li>
+            <li>
+                <a class="text-red-600 transition hover:text-gray-600" href="KONTAK.html">KONTAK</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- END MOBILE MENU COMPONENT -->
+
+<!-- SECTION -->
+<section class="relative section-bg bg-cover bg-center bg-no-repeat content animate-fade-in">
+    <div class="absolute inset-0 bg-black/75 sm:bg-transparent sm:from-black/95 sm:to-black/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
+    <div class="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
+        <div class="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right animate-scroll-up">
+            <h1 class="text-3xl font-extrabold sm:text-5xl text-shadow">
+                RAWAT ANABUL ANDA
+                <strong class="block font-extrabold text-red-600 text-shadow">FEBRIO.SHOP AJA!</strong>
+            </h1>
+            <p class="mt-4 max-w-lg sm:text-xl/relaxed text-shadow">
+                Kami berkomitmen untuk memastikan kepuasan Anda dengan layanan yang kami sediakan!
+            </p>
+            <div class="mt-8 flex flex-wrap gap-4 text-center">
+                <a href="DAFTARSEKARANG.html" class="block w-full rounded px-12 py-3 text-sm font-medium text-white bg-red-600 hover:bg-white hover:text-red-600 focus:outline-none focus:ring active:bg-red-600 sm:w-auto">
+                    DAFTAR SEKARANG
+                </a>
+                <a href="TENTANGKAMI.html" class="block w-full rounded px-12 py-3 text-sm font-medium text-red-600 bg-transparent hover:bg-white hover:text-red-600 focus:bg-white focus:text-red-600 focus:outline-none focus:ring active:bg-white active:text-red-600 sm:w-auto">
+                    TENTANG KAMI →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END SECTION -->
+
+<!-- FOOTER CONTENT -->
+<footer class="footer py-8 animate-scroll-up">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+        <div>
+            <h2 class="text-xl font-bold mb-9 text-red-600 flex items-center gap-2">
+                <img src="img/LOGO.png" alt="Logo" class="h-20 w-130">
+            </h2>
+            <p class="text-gray-700 text-base">Jl. Jalan Raya No. 123, Jakarta Pusat</p>
+            <p class="text-gray-900 text-base">Telp: 08123456789 | Email: febrioshop@gmail.com</p>
+        </div>
+        <div>
+            <h3 class="text-xl font-bold mb-2 text-red-600">JAM OPRASIONAL KAMI :</h3>
+            <p class="text-gray-900 text-base">Senin - Jumat: 08:00 - 17:00</p>
+            <p class="text-gray-900 text-base">Sabtu: 09:00 - 14:00</p>
+            <p class="text-gray-900 text-base">Minggu: Tutup</p>
+        </div>
+    </div>
+</footer>
+<!-- END FOOTER CONTENT -->
+
+<!-- ANIMASI UI HEADER MUNCUL ATAU TIDAK -->
+<script>
+    document.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        const links = navbar.querySelectorAll('a');
+        if (window.scrollY > 0) {
+            navbar.classList.remove('navbar-transparent');
+            navbar.classList.add('navbar-solid');
+            links.forEach(link => {
+                link.classList.remove('text-white');
+                link.classList.add('text-red-900');
+            });
+        } else {
+            navbar.classList.remove('navbar-solid');
+            navbar.classList.add('navbar-transparent');
+            links.forEach(link => {
+                link.classList.remove('text-red-900');
+                link.classList.add('text-white');
+            });
+        }
+    });
+
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    document.getElementById('dismiss-btn')?.addEventListener('click', function() {
+        const promotion = document.getElementById('promotion');
+        if (promotion) {
+            promotion.classList.remove('promo-slide-in');
+            promotion.classList.add('promo-slide-out');
+            promotion.addEventListener('animationend', function() {
+                promotion.remove();
+            });
+        }
+    });
+
+    function onScroll() {
+        const elements = document.querySelectorAll('.animate-scroll-up');
+        elements.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('in-view');
+            } else {
+                el.classList.remove('in-view');
+            }
+        });
+    }
+
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll); // Trigger on page load
+</script>
+
+</body>
+</html>
